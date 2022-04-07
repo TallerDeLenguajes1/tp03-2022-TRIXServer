@@ -4,19 +4,32 @@
 
 #define MAX 50
 
-char *nombre;
-char *buff;
 
 int main(int argc, char const *argv[])
 {    
-    buff = (char *) malloc(MAX * sizeof(char));
-    
-    printf("Ingrese un nombre: ");
-    gets(buff);
+    char *nombre;
+    char *buff;
+    char *vNombre[5];
 
-    puts(buff);
+    buff = (char *) malloc(MAX * sizeof(char));
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Ingrese un nombre: ");
+        gets(buff);
+        vNombre[i] = (char *) malloc((strlen(buff) + 1) * sizeof(char));
+        strcpy(vNombre[i], buff);
+        printf("--\n");
+        puts(vNombre[i]);
+
+    }
 
     free(buff);
+    free(nombre);
+    for (int j = 0; j < 5; j++)
+    {
+        free(vNombre[j]);
+    }
 
     return 0;
 }
