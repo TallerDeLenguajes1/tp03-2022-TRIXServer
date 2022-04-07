@@ -7,8 +7,8 @@
 
 int main(int argc, char const *argv[])
 {    
-    char *buff;
-    char *vNombre[5];
+    char * buff;
+    char * vNombre[5];
 
     buff = (char *) malloc(MAX * sizeof(char));
 
