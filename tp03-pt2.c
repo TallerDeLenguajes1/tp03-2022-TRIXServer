@@ -7,7 +7,6 @@
 
 int main(int argc, char const *argv[])
 {    
-    char *nombre;
     char *buff;
     char *vNombre[5];
 
@@ -19,13 +18,19 @@ int main(int argc, char const *argv[])
         gets(buff);
         vNombre[i] = (char *) malloc((strlen(buff) + 1) * sizeof(char));
         strcpy(vNombre[i], buff);
-        printf("--\n");
-        puts(vNombre[i]);
 
     }
 
+    for (int h = 0; h < 5; h++)
+    {
+        printf("--\n");
+        puts(vNombre[h]);
+
+    }
+
+    printf("--\n");
+    
     free(buff);
-    free(nombre);
     for (int j = 0; j < 5; j++)
     {
         free(vNombre[j]);
