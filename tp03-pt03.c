@@ -24,6 +24,18 @@ int main(int argc, char const *argv[])
         producto * productos; 
     } typedef cliente;
     
+    int cantClientes;
+    cliente * pCliente;
+
+    printf("Ingrese la cantidad de clientes (MAX: 5): ");
+    scanf("%d", &cantClientes);
+    
+    for (int i = 0; i < cantClientes; i++)
+    {
+        printf("--\n");
+
+    }
+
 
     return 0;
 }
