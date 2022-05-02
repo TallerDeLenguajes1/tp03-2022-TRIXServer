@@ -12,6 +12,8 @@ int main(int argc, char const *argv[])
 
     buff = (char *) malloc(MAX * sizeof(char));
 
+    system("cls || clear");
+
     for (int i = 0; i < 5; i++)
     {
         printf("Ingrese un nombre: ");
@@ -31,6 +33,7 @@ int main(int argc, char const *argv[])
     printf("--\n");
     
     free(buff);
+
     for (int j = 0; j < 5; j++)
     {
         free(vNombre[j]);
