@@ -23,6 +23,9 @@ struct cliente
 } typedef cliente;
 
 void cargarClientes(cliente *, int);
+void mostrarProducto(producto *);
+float costoTotalProducto(producto *);
+
 
 int main(int argc, char const *argv[])
 {
@@ -90,4 +93,21 @@ void cargarClientes(cliente * pClientes, int cantClientes)
         fflush(stdin);
 
     }
+}
+
+void mostrarProducto(producto * pProducto)
+{
+    printf("--\n");
+    printf("ID Producto:\t%d\n", pProducto->productoID);
+    printf("Cantidad: \t%d\n", pProducto->cantidad);
+    printf("Tipo Producto: \t%s\n", pProducto->tipoProducto);
+    printf("Precio unitario: \t%.2f\n", pProducto->precioUnitario);
+    printf("--\n");
+
+}
+
+float costoTotalProducto(producto * pProducto)
+{
+    return pProducto->cantidad * pProducto->precioUnitario;
+
 }
