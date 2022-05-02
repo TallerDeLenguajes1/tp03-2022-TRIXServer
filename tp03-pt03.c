@@ -25,6 +25,8 @@ struct cliente
 void cargarClientes(cliente *, int);
 void mostrarProducto(producto *);
 float costoTotalProducto(producto *);
+void mostrarClientes(cliente *, int);
+
 
 
 int main(int argc, char const *argv[])
@@ -43,6 +45,8 @@ int main(int argc, char const *argv[])
 
     pClientes = (cliente *) malloc(cantClientes * sizeof(cliente));
     cargarClientes(pClientes, cantClientes);
+
+    mostrarClientes(pClientes, cantClientes);
 
     return 0;
 }
@@ -98,9 +102,9 @@ void cargarClientes(cliente * pClientes, int cantClientes)
 void mostrarProducto(producto * pProducto)
 {
     printf("--\n");
-    printf("ID Producto:\t%d\n", pProducto->productoID);
-    printf("Cantidad: \t%d\n", pProducto->cantidad);
-    printf("Tipo Producto: \t%s\n", pProducto->tipoProducto);
+    printf("ID Producto:\t\t%d\n", pProducto->productoID);
+    printf("Cantidad: \t\t%d\n", pProducto->cantidad);
+    printf("Tipo Producto: \t\t%s\n", pProducto->tipoProducto);
     printf("Precio unitario: \t%.2f\n", pProducto->precioUnitario);
     printf("--\n");
 
@@ -108,6 +112,44 @@ void mostrarProducto(producto * pProducto)
 
 float costoTotalProducto(producto * pProducto)
 {
-    return pProducto->cantidad * pProducto->precioUnitario;
+    float costoAux;
+    costoAux = pProducto->cantidad * pProducto->precioUnitario;
+    return costoAux;
 
+}
+
+void mostrarClientes(cliente * pClientes, int cantClientes)
+{
+    float costoTotal;
+    float costoProducto;
+
+    costoProducto = 0;
+
+    for (int i = 0; i < cantClientes; i++)
+    {
+        printf("Cliente \t\t%d\n", i + 1);
+        printf("--\n");
+        printf("ID Cliente: \t\t%d\n", pClientes[i].clienteID);
+        printf("Nombre del cliente: \t%s\n", pClientes[i].nombreCliente);
+        printf("Cantidad a pedir: \t%d\n", pClientes[i].cantidadProductosAPedir);
+
+        producto * pProducto = pClientes[i].productos;
+
+        costoTotal = 0;
+
+        for (int j = 0; j < pClientes[i].cantidadProductosAPedir; j++)
+        {
+            printf("--\n");
+            printf("Producto: \t%d\n", j + 1);
+            mostrarProducto(pProducto);
+            costoProducto = costoTotalProducto(pProducto);
+            costoTotal = costoTotal + costoProducto;
+            pProducto++;
+
+        }
+        printf("--\n");
+        printf("Total del pedido: \t%.2f\n", costoTotal);
+        printf("--\n");
+
+    }
 }
